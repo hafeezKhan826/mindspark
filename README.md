@@ -3,8 +3,9 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
 
 ## Running the Application
+
 1. npm install
-2. ng serve --port 4100 
+2. ng serve --port 4100
 
 ## Development server
 
