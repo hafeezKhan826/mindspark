@@ -1,0 +1,8 @@
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-read-mail-t1 [readMail]="readmail"></ms-read-mail-t1>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-read-mail-t2 [readMail]="readmail"></ms-read-mail-t2>
+  </ng-container>
+</ng-container>

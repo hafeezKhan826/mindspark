@@ -1,0 +1,10 @@
+<ms-details-header [from]="from"></ms-details-header>
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-worksheet-report-t2 [template]="template" [worksheetReportData]="worksheetReportData"></ms-worksheet-report-t2>
+  </ng-container>
+  <ng-container *ngSwitchCase=" '2' ">
+    <ms-worksheet-report-t2 [template]="template" [worksheetReportData]="worksheetReportData"></ms-worksheet-report-t2>
+  </ng-container>
+</ng-container>
+<ms-footer [template]="template "></ms-footer>

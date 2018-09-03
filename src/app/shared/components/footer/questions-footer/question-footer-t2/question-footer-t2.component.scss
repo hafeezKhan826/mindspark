@@ -1,0 +1,20 @@
+.textAlign-left {
+  text-align: left;
+}
+
+.textAlign-right {
+  text-align: right;
+}
+
+@media (max-width:1020px) {
+  .row.footer-row {
+    display: grid;
+    text-align: center;
+    .textAlign-left {
+      text-align: center;
+    }
+    .textAlign-right {
+      text-align: center;
+    }
+  }
+}

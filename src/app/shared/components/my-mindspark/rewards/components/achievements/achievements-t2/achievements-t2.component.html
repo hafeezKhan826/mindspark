@@ -1,0 +1,51 @@
+<div class="container my-achievements">
+  <div class="row achievements-row">
+    <div class="col-lg-2 col-md-2">
+      <div class="profile-img">
+        <img *ngIf="profilePic" [src]="profilePic" (error)="imageError()" alt="" title="" />
+      </div>
+
+    </div>
+    <div class="col-lg-7 col-md-6">
+      <h5 class="title">{{'my achievements' | translate }}</h5>
+      <div class="">
+
+        <div class="col-sm-4 achievements-col" *ngIf="userRewardInfo?.sparkies !== null && userRewardInfo?.sparkies !== undefined && userRewardInfo?.sparkies > 0">
+          <img src="assets/common/images/coins_all.gif" alt="" title="" />
+          <div class="col-text">
+            <div class="points">{{ userRewardInfo?.sparkies }}</div>
+            <div class="text">{{'sparkies' | translate}}</div>
+          </div>
+        </div>
+        <div class="col-sm-4 achievements-col" *ngIf="userRewardInfo?.shields !== null && userRewardInfo?.shields !== undefined && userRewardInfo?.shields > 0">
+          <img src="assets/common/images/ms-icons/golden shield.png" alt="" title="" />
+          <div class="col-text">
+            <div class="points">{{ userRewardInfo?.shields }}</div>
+            <div class="text">{{'shields' | translate}}</div>
+          </div>
+        </div>
+        <div class="col-sm-4 achievements-col" *ngIf="userRewardInfo?.achivements !== null && userRewardInfo?.achivements !== undefined && userRewardInfo?.achivements > 0">
+          <img src="assets/common/images/ms-icons/achievement.png" alt="" title="" />
+          <div class="col-text">
+            <div class="points">{{ userRewardInfo?.achivements }}</div>
+            <div class="text">{{'achievements' | translate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 sparkie-champ">
+      <div class="sparkie-badge" *ngFor="let otherRewardsKey of otherRewardsKeys">
+        <span class="badge-count" *ngIf="otherRewards[otherRewardsKey] > 1">{{ otherRewards[otherRewardsKey] }}</span>
+        <img [src]="achivementCompletionImage[otherRewardsKey]" />
+      </div>
+      <!-- <div class="sparkie-badge">
+        <span class="badge-count">2</span>
+        <img src="assets/common/images/sparkie-badge.png" alt="" title="" />
+      </div>
+      <div class="sparkie-badge">
+        <span class="badge-count">3</span>
+        <img src="assets/common/images/effort-badge.png" alt="" title="" />
+      </div> -->
+    </div>
+  </div>
+</div>

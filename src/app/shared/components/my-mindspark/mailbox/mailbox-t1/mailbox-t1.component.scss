@@ -1,0 +1,53 @@
+@import '../mailbox-t2/mailbox-t2.component.scss';
+@import '../../../../../../assets/common/styles/global.variables.scss';
+.comment-btn {
+  border-radius: 15px;
+  background: $morningGloryShadow;
+  box-shadow: 0px 5px 0px $primaryShadowColor;
+  text-transform: capitalize;
+  font-size: 18px;
+  padding: 8px 10px 4px 10px;
+}
+
+.mail-box-section .mailbox-table label {
+  font-family: 'ralewaybold';
+}
+
+.comment-count {
+  font-family: 'BalooBhaina';
+  color: rgba($black, 0.6);
+}
+
+h6 {
+  font-family: 'BalooBhaina';
+}
+
+.mail-messages {
+  label {
+    padding-top: 12px;
+  }
+}
+
+.spacing-none {
+  padding: 0px;
+}
+
+.margin-none {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.mail-blank-state {
+  padding: 20% 0% 20% 0%;
+  .heading {
+    color: rgba($black, 0.8) !important;
+    font-size: 24px !important;
+  }
+  .sub-heading {
+    font-size: 18px;
+    color: rgba($black, 0.8);
+  }
+  .comment-btn {
+    padding: 6px 10px 4px 10px !important;
+  }
+}

@@ -1,0 +1,44 @@
+<div id="contentContainer" class="full-height container questions-container halfwidth">
+  <ms-question-alerts [question]="question" [result]="evaluationResult"></ms-question-alerts>
+  <div class="row main-row">
+    <div class="col-lg-7 col-sm-12 col-md-7 top-spacing bottom-spacing" [ngStyle]="questionStyle">
+      <ms-question-timer *ngIf="showTimer()" [timed]="timed"></ms-question-timer>
+      <div class="row">
+        <div class="col question-info-container" [ngClass]="templateClass">
+          <ms-question-type [type]="question?.mode"></ms-question-type>
+          <div *ngIf="question?.sequence" class="question-number">{{ question?.sequence }}</div>
+        </div>
+        <div class="col text-right" *ngIf="question?.questionVoiceover">
+          <label class="read-out-loud" [ngClass]="{'disabled': voDisabled}" [title]="getVoiceOverTitle()">
+            <button class=" btn-read" (click)="playAudio(question?.questionVoiceover)">
+              <i class="fa fa-volume-up"></i>
+            </button>{{'read out loud' | translate}}</label>
+        </div>
+      </div>
+      <div id="questionForm" class="row">
+        <div class="col-12">
+          <p class="question" [ngClass]="templateClass" [msMaths]="questionField" style="visibility:hidden; position:absolute"></p>
+        </div>
+      </div>
+      <ms-question-hint [viewType]="'halfWidth'" [showHint]="question?.showHint" [hints]="hints" [result]="evaluationResult"></ms-question-hint>
+      <button type="button" class="IDontKnow" [hidden]="hideIDontKnow()" (click)="iDontKnow()">{{'i dont know' | translate }}</button>
+      <ms-question-explanation [questionTemplate]="questionTemplate" [viewType]="'halfWidth'" [result]="evaluationResult"></ms-question-explanation>
+    </div>
+    <div class="col-lg-5 col-sm-12 col-md-5 left-side-options-bar top-spacing bottom-spacing">
+      <ul class="options" [ngClass]="templateClass" *ngIf="mcqChoices.length > 0">
+        <li *ngFor="let choice of mcqChoices; let i = index">
+          <label for="value" (click)="evaluateOption(choice.id)">
+            <div class="questions">
+              <div class="option" [ngClass]="setOptionsClass(evaluationOutput[choice.id], choice.id)">
+                <input type="radio" name="value" *ngIf="timerAvailable">{{ generateOptionString(i) }}</div>
+              <span [msMaths]="choice.value" style="visibility:hidden; position:absolute"></span>
+              <!-- <span class="correct" *ngIf="evaluationOutput[choice.id] === '1'"><i class="fa fa-check"></i></span>  <span class="incorrect" *ngIf="evaluationOutput[choice.id] === '0'"><i class="fa fa-times"></i></span> -->
+            </div>
+          </label>
+        </li>
+      </ul>
+
+    </div>
+    <ms-question-sidebar-btn [evaluationResult]="evaluationResult" [questionContent]="question"></ms-question-sidebar-btn>
+  </div>
+</div>

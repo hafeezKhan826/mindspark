@@ -1,0 +1,75 @@
+<header class="row clearfix mindspark-header">
+  <div class=" col left-header-content pull-left widthAuto">
+    <div class="branding">
+      <ms-logo [trans]="true"></ms-logo>
+    </div>
+
+  </div>
+  <div class=" col right-header-content pull-right widthAuto">
+    <nav>
+      <ul class="nav nav-pills float-right">
+        <li class="nav-item chat" placement="bottom" title="{{ 'comment' | translate }}" *ngIf="permittedNavs?.message">
+          <a class="nav-link" (click)="open()">
+            <i class="fa fa-commenting"></i>
+          </a>
+        </li>
+        <li class="nav-item notification" *ngIf="permittedNavs?.notification">
+          <ng-template #popContent>
+            <ul class="notification-items" class="popup" (click)="$event.stopImmediatePropagation()" [ngClass]="{ 'popop-overflow':moreNotifications, 'popoverHeight': isHeight}">
+
+              <li *ngIf="notifications.length === 0; else showNotifications" class="btn notication-list">
+                <p>You dont have any notifications!</p>
+              </li>
+              <ng-template #showNotifications>
+                <li class="btn notication-list" *ngFor="let notification of notifications" (click)="read(notification)">
+
+                  <a *ngIf="notification?.clickable; else withoutlink" class="not-message row notification" [ngClass]="{'bold': notification?.status=='unread'}"
+                    (click)="goToMailbox()">
+                    <div class="col-sm-2 col-xs-2 notification-image">
+                      <img src="{{notification?.favicon}}" />
+                    </div>
+                    <div class="col-sm-10 col-xs-10 notification-content games-notification">
+                      <div class="notification-title text-capitalize">{{notification?.type}}</div>
+                      <div class="notification-message">{{notification?.text}}</div>
+                    </div>
+                  </a>
+                  <ng-template #withoutlink>
+                    <div class="not-message row notification" [ngClass]="{'bold': notification?.status=='unread'}">
+                      <div class="col-sm-2 col-xs-2 notification-image">
+                        <img src="{{notification?.favicon}}" />
+                      </div>
+                      <div class="col-sm-10 col-xs-10 notification-content">
+                        <div class="notification-title">{{notification?.type}}</div>
+                        <div class="notification-message">{{notification?.text}}</div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </li>
+              </ng-template>
+            </ul>
+            <button class="view-all-notification" *ngIf="moreNotifications" (click)="$event.stopImmediatePropagation(); showAllNotification()">{{'view all' | translate}}</button>
+          </ng-template>
+          <a class="nav-link" title="{{ 'notifications' | translate }}" placement="bottom" #popover="ngbPopover" [ngbPopover]="popContent"
+            popoverTitle="{{'notifications' | translate}}" (document:click)="popover.close()" (click)="$event.stopImmediatePropagation()">
+            <i class="fa fa-bell"></i>
+          </a>
+          <span class="notification-badge badge badge-danger" *ngIf="unreadNotifications">
+            <i class="fa fa-circle"></i>
+          </span>
+        </li>
+        <li class="nav-item help" placement="bottom" title="{{'help' | translate}}" *ngIf="permittedNavs?.help">
+          <a class="nav-link" href="javascript:void(0)">
+            <i class="fa fa-question-circle"></i>
+          </a>
+        </li>
+        <li class="nav-item logout" placement="bottom" title="{{'logout' | translate}}" (click)="logout()">
+          <a href="javascript:void(0)" class="btn btn-primary btn-logout d-sm-block d-none">{{'logout' | translate}}</a>
+          <a class="nav-link d-sm-none" href="javascript:void(0)">
+            <i class="fa fa-sign-out"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+</header>

@@ -1,0 +1,10 @@
+<ms-details-header [topicTrailHeaderData]="topicTrailHeaderData" [from]="from"></ms-details-header>
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-topic-trail-t2 [template]="template" [topicTrailData]="topicTrailData"></ms-topic-trail-t2>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-topic-trail-t2 [template]="template" [topicTrailData]="topicTrailData"></ms-topic-trail-t2>
+  </ng-container>
+</ng-container>
+<ms-footer [template]="template"></ms-footer>

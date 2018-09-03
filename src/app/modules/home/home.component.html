@@ -1,0 +1,12 @@
+<ms-header [template]="template" [isDetailed]="displayDetailedView" [isProfileVisible]="isProfileVisible"></ms-header>
+
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-home-t1 [for]="for" [homeTileList]="homeTileList" [isProfileVisible]="isProfileVisible"></ms-home-t1>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-home-t2 [for]="for" [homeTileList]="homeTileList" [isProfileVisible]="isProfileVisible"></ms-home-t2>
+  </ng-container>
+</ng-container>
+
+<ms-footer [template]="template"></ms-footer>

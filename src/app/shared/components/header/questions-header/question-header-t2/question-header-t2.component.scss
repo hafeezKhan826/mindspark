@@ -1,0 +1,57 @@
+@import '../../../../../../assets/common/styles/global.variables.scss';
+.navigation-right-ct {
+  padding-left: 2rem;
+  background: $primaryColor;
+  margin-left: -15px;
+  z-index: 0;
+  box-sizing: border-box;
+  min-height: 80px;
+  display: inline-block;
+  user-select: none;
+}
+
+.custom-row {
+  display: block;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.concept-left-ct:after {
+  position: absolute;
+  width: 100%;
+  left: -100%;
+  background: rgba(0, 0, 0, 0.12);
+  display: block;
+  top: 0px;
+  height: 100%;
+  content: "";
+}
+
+// .right-section {
+//   display: inherit;
+//   padding: 20px 10px;
+// }
+.concept-left-ct {
+  padding: 0px;
+  min-height: 80px;
+  display: inline-block;
+  float: left;
+}
+
+.template1 {
+  .navigation-right-ct {
+    background: $questionHeaderT2;
+  }
+  .concept-left-ct {
+    background: $questionConceptT2;
+  }
+  .concept-left-ct:after {
+    background: $questionConceptT2;
+  }
+}
+
+@media (max-width:998px) {
+  .concept-left-ct {
+    order: 2;
+  }
+}

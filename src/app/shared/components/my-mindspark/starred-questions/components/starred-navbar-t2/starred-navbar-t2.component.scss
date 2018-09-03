@@ -1,0 +1,18 @@
+.favourite-header-row {
+  margin-bottom: 25px;
+  padding: 25px 20px 10px 20px;
+  select {
+    border: none;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: 14px;
+    width: 250px;
+    height: 40px;
+  }
+  .header-text {
+    padding-top: 10px;
+    font-size: 18px;
+    padding-top: 10px;
+    text-align: right;
+  }
+}

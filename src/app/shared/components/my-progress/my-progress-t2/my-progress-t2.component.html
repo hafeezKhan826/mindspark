@@ -1,0 +1,11 @@
+<div class="container category-container" [ngClass]="templateClass">
+  <div class="row">
+    <ms-weekly-progress-t2 class="col-lg-6 col-md-12 col-sm-12" [reportType]="'current'" [weeklyData]="myProgress?.currentWeekReport"></ms-weekly-progress-t2>
+    <ms-weekly-progress-t2 class="col-lg-6 col-md-12 col-sm-12" [reportType]="'previous'" [weeklyData]="myProgress?.previousWeekReport"></ms-weekly-progress-t2>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ms-monthly-progress-t2 [myProgress]="myProgress"></ms-monthly-progress-t2>
+    </div>
+  </div>
+</div>

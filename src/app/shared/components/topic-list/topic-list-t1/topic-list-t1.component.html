@@ -1,0 +1,32 @@
+<div class="container-fluid  gutterSpacing middle-container  template1">
+  <div class="container gutterSpacing loadsToleft" *ngIf="listSize>0">
+    <div class="row filter-form">
+      <div class="col-md-12">
+        <div class="check-box-container float-right" (click)="check()" *ngIf="isRetail">
+          <div class="checkbox" [ngClass]="{'checked': showHigherGrades }">
+            <input type="checkbox" [(ngModel)]="showHigherGrades">
+            <i class="fa fa-check"></i>
+          </div>
+          <div class="label">{{'show topics for other grades' | translate}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row hidden">
+      <h3 class="page-title">Complete topics & Win sparkies</h3>
+    </div>
+    <ms-topics-tile-t1 class="topics-container" [for]="for" [topicList]="topicTiles" [showHigherGrades]="showHigherGrades"></ms-topics-tile-t1>
+
+  </div>
+
+  <div class="container empty-container" *ngIf="listSize==0">
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <img src="assets/common/images/group-14.png" />
+      </div>
+      <div class="col-md-6 text-content">
+        <div class="heading-blue">{{ 'waiting for some topics' | translate }}...</div>
+        <div class="heading-grey">{{'ask your teacher to activate some topics' | translate}}</div>
+      </div>
+    </div>
+  </div>
+</div>

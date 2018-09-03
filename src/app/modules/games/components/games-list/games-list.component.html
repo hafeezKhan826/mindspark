@@ -1,0 +1,10 @@
+<ms-header [template]="template"></ms-header>
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-game-list-t2 [activityList]="activityList"></ms-game-list-t2>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-game-list-t2 [activityList]="activityList"></ms-game-list-t2>
+  </ng-container>
+</ng-container>
+<ms-footer [template]="template"></ms-footer>

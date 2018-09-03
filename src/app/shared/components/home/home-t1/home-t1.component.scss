@@ -1,0 +1,100 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.style-space {
+  padding-left: 0px;
+  padding-right: 0px;
+  background: $secondaryColor;
+}
+
+.revise-card {
+  border-color: $goldenYellow;
+  position: relative;
+  .btn-revise {
+    background: $goldenYellow;
+    box-shadow: 0px 5px 0px $goldenYellowShadow;
+    .status-label {
+      color: rgba(0, .0, 0, 0.5);
+    }
+  }
+}
+
+.shield {
+  position: absolute;
+  right: 20px;
+  top: -20px;
+  z-index: 9;
+  img {
+    width: 100px;
+  }
+}
+
+.card {
+  position: relative;
+  .btn-holder {
+    height: 46px;
+  }
+  .status-label {
+    top: -2px;
+  }
+  .btn-continue {
+    background: $primaryShadowColor;
+    box-shadow: 0px 0px 0px;
+    border: 2px solid $primaryColor;
+    color: $white;
+    .progress-bar-striped {
+      height: 37px;
+      border-radius: 0;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 8px;
+      box-shadow: 0px 2px 1px $primaryColor;
+    }
+    .progress-bar {
+      background-color: $primaryColor;
+    }
+  }
+}
+
+.tag-status {
+  position: absolute;
+  z-index: 9;
+  top: 15px;
+  left: 2px;
+  img {
+    width: 115px;
+  }
+}
+
+.middle-container {
+  padding-top: 5%;
+  min-height: calc(100vh - 250px);
+  background: url('../../../../../assets/common/images/train-track-upper.png'), url('../../../../../assets/common/images/train-track-lower.png');
+  background-position: 0% 0%, 100% 180%;
+  background-repeat: no-repeat;
+  background-size: 25%, 75%;
+  padding-bottom: 80px;
+}
+
+.empty-container {
+  transform: translate(1%, 30%);
+  font-family: BalooBhaina;
+  img {
+    padding-bottom: 20px;
+  }
+  .text-content {
+    padding-top: 50px;
+    .heading-blue {
+      font-size: 24px;
+      font-weight: bold;
+      color: $black;
+    }
+    .heading-grey {
+      font-size: 18px;
+      font-weight: bold;
+      color: $black;
+    }
+  }
+}
+
+// .gutterSpacing {
+//   padding-left: 0px;
+//   padding-right: 0px;
+// }

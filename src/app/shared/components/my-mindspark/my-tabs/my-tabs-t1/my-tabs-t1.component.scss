@@ -1,0 +1,35 @@
+@import '../../../../../../assets/common/styles/global.variables.scss';
+.my-mind-spark-section {
+  //margin-top: 40px;
+  .tabs-section {
+    .tab-link-item {
+      display: inline-block;
+      a {
+        padding: 7px 15px 0px 15px;
+        cursor: pointer;
+        margin-right: 10px;
+        font-size: 18px;
+        color: $white;
+        background: $dark-sky-blue;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        height: 42px;
+        text-decoration: none;
+        text-transform: capitalize;
+        font-family: BalooBhaina;
+        &:focus {
+          outline: none;
+        }
+      }
+      a.active {
+        background: $myMindsparkBgColor;
+        color: $dark-sky-blue;
+      }
+    }
+    ul {
+      margin-bottom: 4px;
+      z-index: 1;
+      position: relative;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<div class="container-fluid question-header-fluid" [ngClass]="templateClass">
+  <div class="container questions-header">
+    <ng-container [ngSwitch]="template">
+      <ng-container *ngSwitchCase="'1'">
+        <ms-question-header-t2 [headerContent]="headerContent"></ms-question-header-t2>
+      </ng-container>
+      <ng-container *ngSwitchCase="'2'">
+        <ms-question-header-t2 [headerContent]="headerContent"></ms-question-header-t2>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

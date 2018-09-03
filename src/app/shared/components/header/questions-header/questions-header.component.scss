@@ -1,0 +1,22 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.question-header-fluid {
+  background: $primaryColor; // min-height: 95px;
+}
+
+.questions-container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.question-container-section {
+  position: relative;
+}
+
+.questions-header {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.question-header-fluid.template1 {
+  background: $questionHeaderT2;
+}

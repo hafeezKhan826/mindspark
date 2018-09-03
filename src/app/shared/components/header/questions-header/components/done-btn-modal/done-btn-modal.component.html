@@ -1,0 +1,141 @@
+<!-- <ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-done-modal-t1 [pedagogyContentMode]="pedagogyContentMode"></ms-done-modal-t1>
+    !--<ms-done-modal-worksheet></ms-done-modal-worksheet>--
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-done-modal-t2 [pedagogyContentMode]="pedagogyContentMode"></ms-done-modal-t2>
+    !--<ms-done-modal-worksheet></ms-done-modal-worksheet>--
+  </ng-container>
+</ng-container> -->
+<!-- start quit higher level modal -->
+<ng-template #quitHigherLevel let-c="close" let-d="dismiss">
+  <div>
+    <div class="modal-header modal-header-container">
+      <button hidden type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="modal-body modal-btn-container">
+      <p>Would you continue doing higher level next time?</p>
+      <button type="button" class="btn modalbtns btn-yes" (click)="closeContent()">YES</button>
+      <button type="button" class="btn modalbtns btn-no" (click)="quitTopicHigherLevel()">NO</button>
+    </div>
+  </div>
+</ng-template>
+<!-- end quit higher level modal -->
+
+<!-- start messages modal -->
+<ng-template #messagesModal let-c="close" let-d="dismiss">
+  <div [ngClass]="templateClass">
+    <div class="modal-header modal-header-container">
+      <button type="button" class="close" hidden aria-label="Close" (click)="d('Cross click')">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="modal-body modal-btn-container">
+      <p [innerHtml]="message?.message | sanitizeCode"></p>
+      <ng-container [ngSwitch]="message?.action">
+        <ng-container *ngSwitchCase="'continue'">
+          <button type="button" class="btn modalbtns btn-yes">{{'continue' | translate}}</button>
+        </ng-container>
+        <ng-container *ngSwitchCase="'continue_retry'">
+          <button type="button" class="btn modalbtns btn-yes">{{'continue' | translate}}</button>
+          <button type="button" class="btn modalbtns btn-no" (click)="closePedagogyOverlay()">RETRY</button>
+        </ng-container>
+        <ng-container *ngSwitchCase="'exit_continue'">
+          <button type="button" class="btn modalbtns btn-yes">{{'continue' | translate}}</button>
+          <button type="button" class="btn modalbtns btn-no" (click)="closePedagogyOverlay()">EXIT</button>
+        </ng-container>
+        <ng-container *ngSwitchCase="'yes_no'">
+          <button type="button" class="btn modalbtns btn-no" (click)="closePedagogyOverlay()">NO</button>
+          <button type="button" class="btn modalbtns btn-yes">YES</button>
+        </ng-container>
+        <ng-container *ngSwitchCase="'sure_no'">
+          <button type="button" class="btn modalbtns btn-no" (click)="closePedagogyOverlay()">NO</button>
+          <button type="button" class="btn modalbtns btn-yes">SURE</button>
+        </ng-container>
+        <ng-container *ngSwitchCase="'okay'">
+          <button type="button" class="btn modalbtns btn-yes" (click)="closePedagogyOverlay()">{{ 'ok' | translate }}</button>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+<!-- end messages modal -->
+
+<!-- start quit worksheet / Timed Test modal -->
+<ng-template #quitTimedModal let-c="close" let-d="dismiss">
+  <div class="modal-header modal-header-container">
+    <button type="button" id="closeWorksheetModal" class="close" aria-label="Close" (click)="d('Cross click')" hidden>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="modal-body modal-btn-container">
+    <p>You often perform better if you attempt worksheet in one go</p>
+    <button type="button" class="btn modalbtns btn-yes" (click)="c('Close click')">COMPLETE</button>
+    <button type="button" class="btn modalbtns btn-no" (click)="closeTimedContent()">{{'close' | translate}}</button>
+  </div>
+</ng-template>
+<!-- end quit worksheet modal -->
+
+<!-- start score sheet modal -->
+<ng-template #scoreSheetModal let-c="close" let-d="dismiss">
+  <div class="scoresheet-modal">
+    <div class="modal-header modal-header-container">
+      <button hidden type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="title-section">
+        <p>{{ getContentType() | translate }}</p>
+        <p [innerHtml]="questionContent?.contentName"></p>
+      </div>
+      <div *ngIf="scoreDetails?.accuracy" class="question-result-section">
+        <div class="accuracy">{{ scoreDetails?.accuracy }}% {{ 'accuracy' | translate }}</div>
+        <div class="question-count right">
+          <i class="icon fa fa-check"></i>
+          <span class="count">{{ padZero(scoreDetails?.correct) }}</span>
+        </div>
+        <div class="question-count wrong">
+          <i aria-hidden="true" class="icon fa fa-times"></i>
+          <span class="count">{{ padZero(scoreDetails?.wrong) }}</span>
+        </div>
+      </div>
+      <div class="content">
+        <span [innerHtml]="scoreDetails?.userName"></span>,
+        <ng-container *ngIf="scoreDetails?.finished; then finishedContent; else timedoutContent"></ng-container>
+        <ng-template #finishedContent>
+          <p>
+            <span *ngIf="scoreDetails?.duration">{{ 'had time todo timed test' | translate:{ duration: scoreDetails?.duration } }}</span>
+            <br>
+            <span *ngIf="scoreDetails?.timeTaken">{{ 'completed timed test in' | translate:{ duration:scoreDetails?.timeTaken } }}</span>
+            <br>
+            <span class="result-success">{{ 'excellent work' | translate }}!</span>
+          </p>
+          <!-- <p class="">Your estimate was 14 questions and you got 12 correct!</p> -->
+          <!-- <span class="result">Good effort!</span> -->
+        </ng-template>
+        <ng-template #timedoutContent>
+          <p>
+            <span>{{ 'your time is up' | translate }}</span>
+            <br>
+            <span *ngIf="scoreDetails?.duration">{{ 'had time todo timed test' | translate:{ duration: scoreDetails?.duration } }}</span>
+            <br>
+            <span class="result-failure">{{ 'try next time' | translate }}!</span>
+          </p>
+        </ng-template>
+      </div>
+      <div class="action-btns form-group">
+        <div class="">
+          <button type="button" class="btn modalbtns btn-next" (click)="updateAnswer()">{{ 'next' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!-- End score sheet modal -->
+
+<button *ngIf="from==='topic' || from==='worksheet'" class=" btn btn-done" [ngClass]="templateClass" (click)="doneQuestion(content)">{{'done' | translate}}</button>
+<button *ngIf="from==='games'" class=" btn btn-done" [ngClass]="templateClass" (click)="doneQuestion(content)">{{'close' | translate}}</button>

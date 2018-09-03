@@ -1,0 +1,62 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.empty-container {
+  //padding: 100px 0px;
+  img {
+    padding-bottom: 20px;
+  }
+  .text-content {
+    padding-top: 50px;
+    .heading-blue {
+      font-size: 18px;
+      font-weight: bold;
+      color: $primaryColor;
+    }
+    .heading-grey {
+      font-size: 18px;
+      font-weight: bold;
+      color: $darkGrey;
+    }
+  }
+}
+
+.middle-container.desktop {
+  margin-top: 20px;
+}
+
+.empty-container {
+  // padding: 100px 0px;
+  transform: translate(1%, 30%);
+  img {
+    padding-bottom: 20px;
+  }
+  .text-content {
+    padding-top: 50px;
+    .heading-blue {
+      font-size: 18px;
+      font-weight: bold;
+      color: $primaryColor;
+    }
+    .heading-grey {
+      font-size: 18px;
+      color: $greyishBrown;
+    }
+  }
+}
+
+// .gutterSpacing {
+//   padding-left: 0px;
+//   padding-right: 0px;
+// }
+
+/*******media queries*********/
+
+@media(max-width: 1400px) {
+  .middle-container.desktop {
+    min-height: calc(100% - 405px);
+  }
+  ms-home-t2 {
+    .card {
+      margin-bottom: 17px !important;
+    }
+  }
+}

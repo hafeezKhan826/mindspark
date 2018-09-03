@@ -1,0 +1,9 @@
+<ms-details-header [from]="from"></ms-details-header>
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-topic-details-t2 [topicDetails]="topicDetails"></ms-topic-details-t2>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-topic-details-t2 [topicDetails]="topicDetails"></ms-topic-details-t2>
+  </ng-container>
+</ng-container>

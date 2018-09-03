@@ -1,0 +1,17 @@
+<ng-template #content let-c="close" let-d="dismiss">
+
+
+  <div class="modal-header modal-header-container">
+    <button type="button" id="closeWorksheetModal" class="close" aria-label="Close" (click)="d('Cross click')" hidden>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="modal-body modal-btn-container">
+    <p>{{'you often perform'| translate}}</p>
+    <button type="button" class="btn modalbtns btn-yes" (click)="c('Close click')">{{'complete' | translate}}</button>
+    <a routerLink="/worksheets" class="btn modalbtns btn-no" (click)="closeWorksheet()">{{'close' | translate}}</a>
+  </div>
+</ng-template>
+
+<button class="btn btn-done" (click)="open(content)">{{'done' | translate}}</button>

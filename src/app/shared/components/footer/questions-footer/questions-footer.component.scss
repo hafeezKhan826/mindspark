@@ -1,0 +1,23 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.questions-footer {
+  background: $secondaryColor;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 11px;
+  font-weight: bold;
+  position: fixed;
+  z-index: 9;
+  display: block;
+  bottom: 0px;
+  width: 100%;
+  padding: 4px 30px;
+}
+
+@media screen and(max-width:1020px) {
+  .questions-footer {
+    position: absolute;
+  }
+}
+
+.questions-footer.template1 {
+  color: $white;
+}

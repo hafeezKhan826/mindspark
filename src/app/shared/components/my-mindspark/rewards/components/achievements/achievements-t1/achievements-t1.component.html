@@ -1,0 +1,22 @@
+<div class="main-container">
+  <div class="cloud-bg"></div>
+  <div class="row">
+    <div class="achivements-col text-center" *ngIf="userRewardInfo?.sparkies !== null && userRewardInfo?.sparkies !== undefined && userRewardInfo?.sparkies > 0">
+      <div class="sparkie-badge">
+        <img src="assets/common/images/coins_all.gif" alt="" title="" />
+      </div>
+
+      <div class="sparkies-count">{{ userRewardInfo?.sparkies }}</div>
+      <div class="sparkies-text">{{'sparkies you won' | translate}}</div>
+    </div>
+    <div class="achivements-col text-center" *ngFor="let otherRewardsKey of otherRewardsKeys; let i = index">
+      <img [src]="achivementCompletionImage[otherRewardsKeys[i]]" alt="" title="" />
+      <div class="sparkies-count">{{ otherRewards[otherRewardsKeys[i]] }}</div>
+      <div *ngIf="otherRewardsKeys[i].toLowerCase()==='sparkiestar'">
+        <div class="sparkies-text">{{'sparkies star badges' | translate}}</div>
+        <div class="sparkies-text-dark">{{'collect it from your teacher' | translate}}</div>
+      </div>
+      <div class="sparkies-text" *ngIf="otherRewardsKeys[i].toLowerCase()==='sparkiechamp'">{{ 'sparkie Champ' | translate }}</div>
+    </div>
+  </div>
+</div>

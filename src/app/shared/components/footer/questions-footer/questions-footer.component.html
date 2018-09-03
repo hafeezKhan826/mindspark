@@ -1,0 +1,12 @@
+<div id="questionFooter" class="container-fluid questions-footer" [ngClass]="templateClass">
+  <div class="container">
+    <ng-container [ngSwitch]="template">
+      <ng-container *ngSwitchCase="'1'">
+        <ms-question-footer-t2 [sessionInformation]="sessionInformation"></ms-question-footer-t2>
+      </ng-container>
+      <ng-container *ngSwitchCase="'2'">
+        <ms-question-footer-t2 [sessionInformation]="sessionInformation"></ms-question-footer-t2>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

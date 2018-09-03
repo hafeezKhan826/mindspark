@@ -1,0 +1,11 @@
+<div class="question-navigation-ct">
+  <ms-default *ngIf="toDisplay!=='worksheet'" [pedagogyContent]="pedagogyContent"></ms-default>
+  <ms-worksheet *ngIf="toDisplay==='worksheet'" [toDisplay]="toDisplay"></ms-worksheet>
+</div>
+<div class="right-section">
+  <ms-sparkies *ngIf="toDisplay!=='worksheet'" [pedagogySparkie]="pedagogyContent?.sparkie"></ms-sparkies>
+  <div class="submin-btn">
+    <ms-done-btn-modal [pedagogyContentMode]="pedagogyContent?.contentMode" [pedagogyHigherLevel]="pedagogyContent?.higherLevelStatus"></ms-done-btn-modal>
+    <!-- <ms-done-modal-worksheet *ngIf="toDisplay==='worksheet'"></ms-done-modal-worksheet> -->
+  </div>
+</div>

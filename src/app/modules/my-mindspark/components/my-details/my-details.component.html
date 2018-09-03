@@ -1,0 +1,8 @@
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-my-details-t1 [myDetails]="myDetails"></ms-my-details-t1>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-my-details-t2 [myDetails]="myDetails"></ms-my-details-t2>
+  </ng-container>
+</ng-container>

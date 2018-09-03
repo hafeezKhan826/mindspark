@@ -1,0 +1,41 @@
+  @import '../../../../../assets/common/styles/global.variables.scss';
+  .fly-notification-header {
+    border-bottom: none;
+    .close {
+      width: 100%;
+      text-align: right;
+    }
+  }
+
+  .fly-notification-ct {
+    padding: 0px;
+    .notificationContent-ct {
+      .notificationContent-main-cont {
+        display: flex;
+        padding: 30px;
+        .sparkie-image {
+          width: 124px;
+          height: 162px;
+        }
+        .message {
+          font-size: 24px;
+          font-weight: bold;
+          line-height: 1.33;
+          text-align: left;
+          padding: 30px;
+          span {
+            color: $lightish-green;
+          }
+          p {
+            color: $dark-gray;
+            padding-top: 10px;
+          }
+        }
+      }
+      .starCloud {
+        .star-clouds-image {
+          width: 100%;
+        }
+      }
+    }
+  }

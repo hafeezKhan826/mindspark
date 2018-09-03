@@ -1,0 +1,118 @@
+@import '../../../../../../assets/common/styles/global.variables.scss';
+@import '../../../../../modules/my-mindspark/components/read-mail/read-mail.component.scss';
+.read-mail-section {
+  background-color: $myMindsparkBgColor;
+  height: 105% !important;
+}
+
+.question-body {
+  margin: 25px 0 25px 0 !important;
+}
+
+.name-label label,
+.question-details label,
+.read-date label,
+.question-head .helpful,
+.back-btn .back-text {
+  font-family: 'ralewaysemibold';
+}
+
+.read-mail-section .question-head {
+  background-color: #d6eefb;
+  padding: 19px 20px 19px 20px;
+}
+
+.grade-type-1 {
+  .question-body {
+    padding: 1px 0px 0px 0px;
+    border-radius: 16px;
+    .comment-section {
+      border-radius: 0px;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      background-color: #d6eefb;
+      padding: 0px !important;
+      .attachmentFiles {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
+    .threads {
+      .thread {
+        padding: 35px 25px 5px 28px;
+      }
+    }
+  }
+  .text-group {
+    padding: 10px 10px 0px 10px;
+    textarea {
+      height: 60px;
+      font-family: ralewaysemibold;
+    }
+  }
+  textarea {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .send-btn {
+    margin-top: 20px !important;
+    margin-right: 14px !important;
+    margin-left: 0px !important;
+    button {
+      background: $secondaryShadowColor;
+      box-shadow: 0px 5px 0px $mid-green;
+      border-radius: 15px;
+      padding-top: 11px;
+      &:disabled {
+        background: $a3a3a3;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+label[for='upload'],
+label[for='uploadFile'] {
+  cursor: pointer !important;
+  position: absolute !important;
+  top: 30px !important;
+  right: 22px !important;
+}
+
+.attachment-file {
+  margin-bottom: 10px !important;
+  margin-left: 10px!important;
+  margin-right: 10px !important;
+}
+
+.attachment-close {
+  top: 3px !important;
+  z-index: 999;
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+}
+
+.comments-count {
+  .question {
+    position: relative;
+    top: 5px;
+    line-height: 1 !important;
+    width: 100% !important;
+    font-family: 'BalooBhaina';
+  }
+}
+
+.show-more {
+  font-family: 'BalooBhaina';
+}
+
+.read-date {
+  color: rgba($black, 0.7);
+}
+
+.progress {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin-top: -16px !important;
+}

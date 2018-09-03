@@ -1,0 +1,14 @@
+<div id="questionHeader" class="custom-row" [ngClass]="templateClass">
+  <div *ngIf="toDisplay!=='worksheet'" class="col-lg-5 col-md-12 col-sm-12 concept-left-ct">
+    <ms-question-concept [toDisplay]="toDisplay" [pedagogyContent]="headerContent?.pedagogyContentLeft"></ms-question-concept>
+  </div>
+  <div class="col-md-12 col-sm-12  navigation-right-ct" [ngClass]="{'col-lg-7': toDisplay!=='worksheet', 'col-lg-12': toDisplay==='worksheet'}">
+    <ms-question-navigation [toDisplay]="toDisplay" [pedagogyContent]="headerContent?.pedagogyContentRight"></ms-question-navigation>
+  </div>
+  <!-- <div class="right-section col-md-2">
+    <ms-sparkies [pedagogySparkie]="pedagogyContent?.sparkie"></ms-sparkies> -->
+  <!-- <div class="submin-btn">
+      <ms-done-btn-modal [pedagogyContentMode]="pedagogyContent?.contentMode"></ms-done-btn-modal>
+    </div>
+  </div> -->
+</div>

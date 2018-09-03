@@ -1,0 +1,22 @@
+<div class="left-nav" [ngClass]="templateClass">
+  <label class="concept-title">
+    <span class="concept-icon">
+      <span *ngIf="pedagogyChild?.type == 'timedTest'" class="icon-timed-test custom-icon"></span>
+      <span *ngIf="pedagogyChild?.type == 'game'" class="icon-game custom-icon"></span>
+      <span *ngIf="pedagogyChild?.type == 'concept'" class="icon-concept custom-icon"></span>
+      <span *ngIf="pedagogyChild?.type == 'practice'" class="icon-prepost-test custom-icon"></span>
+    </span>
+    <span class="title" [innerHtml]="contentName"></span>
+  </label>
+  <div *ngIf="showConceptProgress()" class="navigation-section questionNav">
+    <div class="questionNav-fade-left"></div>
+    <div class="questionNav-fade-right"></div>
+    <ul id="pedegogyProgress" class="list-inline" [ngClass]="{'force-position': (pedagogyChild?.progress.length > maxProgressList)}"
+      [ngStyle]="leftPosition">
+      <li class="list-inline-item" *ngFor="let progress of pedagogyChild?.progress">
+        <div class="circle-nav" [ngClass]="{ 'completed-qs': progress?.state == 'passed', 'failed-qs': progress?.state == 'failed', 'current-qs': progress?.state == 'in-progress' }"></div>
+      </li>
+    </ul>
+  </div>
+  <ms-time-test *ngIf="showTimedTest()" [timedTestData]="pedagogyContent?.timedTestData"></ms-time-test>
+</div>

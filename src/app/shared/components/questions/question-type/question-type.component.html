@@ -1,0 +1,11 @@
+<p *ngIf="showTypeSection()" class="question-type" [ngClass]="getTypeClass()">
+  <ng-container [ngSwitch]="type">
+    <ng-container *ngSwitchCase="'timedTest'">Timed Test</ng-container>
+    <ng-container *ngSwitchCase="'challenge'">Challenge Question</ng-container>
+    <ng-container *ngSwitchCase="'wildCard'">Wild Card Question</ng-container>
+    <ng-container *ngSwitchCase="'higherLevel'">Higher Level Question</ng-container>
+    <ng-container *ngSwitchCase="'practice'">Practice Question</ng-container>
+    <ng-container *ngSwitchCase="'worksheet'">{{'worksheets' | translate}}</ng-container>
+  </ng-container>
+  <span class="arrow"></span>
+</p>

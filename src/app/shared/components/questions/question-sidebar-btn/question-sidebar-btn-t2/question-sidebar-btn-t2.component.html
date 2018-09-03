@@ -1,0 +1,53 @@
+<div class="main-btn-container">
+  <ms-vernacular-btn *ngIf="hasTranslation"></ms-vernacular-btn>
+
+  <div class="btns-container-fixed" [ngClass]="templateClass">
+    <ul>
+      <li class="btns-stages">
+        <ng-container *ngIf="result?.noMoreAttempts || activateNext || (result?.result === true || result?.result === 'correct'); then nextQuestion; else actionQuestion"></ng-container>
+        <ng-template #nextQuestion>
+          <button *ngIf="from !== 'worksheet'" class="btn-container next-btn" (click)="loadNext()" [disabled]="disableNext">
+            <div class="btn">
+              <i class="fa fa-arrow-right"></i>
+            </div>
+            <span>{{'next' | translate}}</span>
+          </button>
+        </ng-template>
+        <ng-template #actionQuestion>
+          <button *ngIf="questionTemplate.toLowerCase() === 'game'; else submitQuestion" class="btn-container skip-btn" (click)="skipContent()">
+            <div class="btn">
+              <i class="fa fa-arrow-right"></i>
+            </div>SKIP
+          </button>
+          <ng-template #submitQuestion>
+            <button *ngIf="showSubmitButton()" class="btn-container" (click)="submitFormAnswer()" [ngClass]="{'submit-btn': from !== 'worksheet', 'next-btn': from === 'worksheet'}">
+              <div class="btn">
+                <i class="fa fa-arrow-right"></i>
+              </div>
+              <span *ngIf="from !== 'worksheet'">{{ 'submit' | translate }}</span>
+              <span *ngIf="from === 'worksheet'">{{ 'next' | translate }}</span>
+            </button>
+          </ng-template>
+        </ng-template>
+      </li>
+      <li class="other-btns" *ngIf="question?.permittedNavs?.showComment || question?.permittedNavs?.showFavorites">
+        <div class="btn-comment-box other-btn" *ngIf="question?.permittedNavs?.showComment">
+          <button type="button" (click)="commentActive()" class="btn-comment">
+            <i class="fa fa-commenting"> </i>
+          </button>
+        </div>
+        <div class="btn-favourite-box other-btn" *ngIf="question?.permittedNavs?.showFavorites">
+          <button type="button" (click)="addToFavourities()" [ngClass]="{'btn-active': isFavourite }" class="btn-favourite">
+            <i class="fa fa-star"></i>
+          </button>
+        </div>
+      </li>
+      <li class="btns-stages" *ngIf="displayQuitWorksheetButton()">
+        <button class="btn-container submit-btn" (click)="quitWorksheets()">
+          <div class="btn">
+            <i class="fa fa-arrow-right"></i>
+          </div> SUBMIT </button>
+      </li>
+    </ul>
+  </div>
+</div>

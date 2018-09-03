@@ -1,0 +1,148 @@
+<div class="read-mail-section">
+  <div class="back-btn">
+    <img src="assets/common/images/back-arrow.png" routerLink='/my-mindspark/mailbox' class="back-btn">
+    <a class="back-text" routerLink='/my-mindspark/mailbox'>{{ 'back to all mails' | translate }}</a>
+  </div>
+
+  <div class="question-head">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-12 comments-count">
+        <div class="question">{{ readmail?.messageDetails?.messagePreview | shorten: textlimit: '...' }}</div>
+      </div>
+      <div *ngIf="readmail?.messageDetails?.rate?.rateFlag" class="col-md-6 col-sm-6 col-xs-12 text-right helpful">how useful was this conversation?
+        <ngb-rating (rateChange)="saveCommentRating($event)" [rate]="readmail?.messageDetails?.rate?.rating">
+          <ng-template let-fill="fill">
+            <span class="star" [class.filled]="fill"></span>
+          </ng-template>
+        </ngb-rating>
+      </div>
+    </div>
+    <!-- <div class="shows-more">
+              <div class="text-uppercase text-right"><span class="show-more">Show More</span></div>
+            </div> -->
+  </div>
+  <!--Threads-->
+  <div class="question-body">
+    <div class="threads">
+      <div class="thread" *ngFor="let reply of readmail?.messageTrail;let i=index">
+        <div class="row">
+          <div class="col-md-1 col-sm-1 col-xs-1 profile-read-img" [ngStyle]="{ 'background-image': 'url(' + reply?.fromUserDetails?.avatar + ')' }">
+            <!-- <img src="{{ readmail?.userInformation?.avatar }}"> -->
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-9 text-left name-label">
+            <label class="text-uppercase">{{ reply?.fromUserDetails?.name }}</label>
+          </div>
+          <div *ngIf="reply?.submitDate" class="col-md-2 col-sm-2 col-xs-2 text-right read-date">
+            <label>
+              <i class="fa fa-clock-o"></i>
+              {{ reply?.submitDate | amParse:'YYYY-MM-DD hh:mm:ss A' | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col question-details">
+            <div *ngFor="let content of displayContent">
+              <label [innerHtml]="reply?.replyContent | sanitizeCode"></label>
+              <div *ngIf="i === 0 && explain === 'HIDE'">
+                <div class="question" [msMaths]="content?.questionField"></div>
+                <!-- start -->
+                <ng-container *ngIf="content?.contentType==='question'">
+                  <div class="options row">
+                    <div class="option col-md-6" *ngFor="let choice of content?.responseElements?.mcqPattern?.choices;let j=index">
+                      <div class="option-key">{{ generateOptionString(j) }}</div>
+                      <span [msMaths]="choice?.value" class="choice-items"></span>
+                    </div>
+                  </div>
+                  <div class="row answer">
+                    <div class="col">
+                      <div class="answer-title">{{ 'your answer' | translate }}</div>
+                      <!-- <div class="selected-answer">{{ generateOption(trail?.response?.mcqPattern?.correctAnswer) }}</div> -->
+                      <div class="selected-answer" *ngIf="content?.templateContent?.toLowerCase() === 'mcq'">{{ generateOptionString(content?.userAnswer?.userAnswer) }}</div>
+                      <div class="selected-answer" *ngIf="content?.templateContent?.toLowerCase() === 'blank'"> {{ content?.userAnswer?.userAnswer }} </div>
+                      <div class="selected-answer" *ngIf="content?.templateContent?.toLowerCase() === 'dropdown'"> {{ content?.userAnswer?.userAnswer | json }} </div>
+                      <div class="selected-answer" *ngIf="content?.templateContent?.toLowerCase() === 'blank_dropdown'"> {{ content?.userAnswer?.userAnswer | json }} </div>
+                    </div>
+                    <div class="col">
+                      <div class="answer-title">{{ 'right answer' | translate }}</div>
+                      <!-- <div class="selected-answer">{{ generateOption(trail?.response?.mcqPattern?.correctAnswer) }}</div> -->
+                      <div class="selected-answer" *ngIf="content?.templateContent?.toLowerCase() === 'mcq'">{{ content?.correctAnswer }}</div>
+                      <div class="selected-answer" *ngIf="content?.templateContent?.toLowerCase() === 'blank'"> {{ content?.correctAnswer }} </div>
+                      <div class="selected-answer" *ngIf="content?.templateContent?.toLowerCase() === 'dropdown'"> {{ content?.correctAnswer | json }} </div>
+                      <div class="selected-answer" *ngIf="content?.templateContent?.toLowerCase() === 'blank_dropdown'"> {{ content?.correctAnswer | json }} </div>
+
+                    </div>
+                  </div>
+                  <!-- Explanation -->
+                  <div class="question-explanation" *ngIf="content?.explanation">
+                    <div class="question-explanation-container">
+                      <div class="question-explanation-heading"> {{ 'explanation' | translate }} </div>
+                      <div class="question-explanation-content" [msMaths]=content?.explanation>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Explanation Ends-->
+                </ng-container>
+              </div>
+            </div>
+            <span *ngIf="i == '0' && readmail?.messageDetails?.contentID" class="pull-right show-more" (click)="showQuestion()">{{explain}} QUESTION</span>
+            <div class="clearfix"></div>
+            <div class="attachemented-files" *ngIf="reply?.attachments?.length > 0">
+              <div class="attachmentFiles">
+                <div class="attachment-file">
+                  <button (click)="open(imageBoxModal, uploadFile)" type="button" class="btn attachment-btn" *ngFor="let uploadFile of reply?.attachments"
+                    [title]="uploadFile | getFileName">
+                    {{ uploadFile | getFileName }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="comment-section">
+      <div class="comment-input">
+        <form [formGroup]="replyMessage" (submit)="replyToMessage()">
+          <div class="text-group">
+            <textarea class="form-control" placeholder="{{'add comment' | translate}}" formControlName="replyBody"></textarea>
+            <label for="uploadFile">
+              <input type="file" accept=".jpg,.png" #uploadFile id="uploadFile" (change)="updateSelectedFiles()" capture="filesystem" multiple
+                hidden/>
+              <div class="attachments">
+                <img src="assets/common/images/attachment.png">
+              </div>
+            </label>
+          </div>
+          <div class="send-btn">
+            <button class="details-btn btn-md" [disabled]="disableSend()">{{'send' | translate }}</button>
+          </div>
+        </form>
+      </div>
+      <div class="clearfix"></div>
+      <div class="attachmentFiles">
+        <div class="attachment-file" *ngIf="files.length > 0">
+          <button type="button" *ngFor="let imagefile of files" class="btn attachment-btn">{{ imagefile?.filename }}</button>
+          <span class="attachment-close" (click)="removeFile()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="text-danger">{{ uploadFileError }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--attachment showing image Modal  -->
+<ng-template #imageBoxModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ images | getFileName }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="imageShowing-ct">
+      <img [src]="images" alt="image" title="image" />
+    </div>
+  </div>
+</ng-template>

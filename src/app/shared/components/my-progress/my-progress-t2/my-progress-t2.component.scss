@@ -1,0 +1,17 @@
+.category-container {
+  padding-top: 25px;
+}
+
+.category-container.template1 {
+  font-family: 'BalooBhaina';
+  padding-top: 50px;
+}
+
+@media (max-width:768px) {
+  .category-container {
+    padding-top: 100px;
+  }
+  .category-container.template1 {
+    padding-top: 100px;
+  }
+}

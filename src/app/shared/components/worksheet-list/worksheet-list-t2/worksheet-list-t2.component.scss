@@ -1,0 +1,31 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.worksheet-title {
+  font-size: 18px;
+  color: rgba($black, 0.6);
+  padding: 0px 15px 15px 15px
+}
+
+h4 {
+  margin-bottom: 0px;
+}
+
+.empty-container {
+  // padding: 100px 0px;
+  transform: translate(1%, 30%);
+  img {
+    padding-bottom: 20px;
+  }
+  .text-content {
+    padding-top: 50px;
+    .heading-blue {
+      font-size: 18px;
+      font-weight: bold;
+      color: $primaryColor;
+    }
+    .heading-grey {
+      font-size: 18px;
+      font-weight: bold;
+      color: $greyishBrown;
+    }
+  }
+}

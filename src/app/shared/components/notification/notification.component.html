@@ -1,0 +1,44 @@
+<div class="notification-img-ct">
+  <button type="button" class="" (click)="open(changePswrdModal)">
+    <img src="assets/common/images/notificationImg.png" alt="{{'notification' | translate}}" title="{{'notification' | translate}}"
+    />
+  </button>
+</div>
+<!-- Notification modal -->
+<div class="notification-modal">
+  <ng-template #changePswrdModal let-c="close" let-d="dismiss">
+    <!-- <div class="modal-header">
+    </div> -->
+    <div class="modal-body notificationModal">
+      <div class="notification-modal-content">
+        <div class="row-block">
+          <div class="left-content">
+            <img src="assets/common/images/coins_all.gif" alt="{{'sparkies' | translate}}" title="{{'sparkies' | translate}}" />
+          </div>
+          <div class="right-content">
+            <h4 class="top-title">Awesome!</h4>
+            <p>You are the sparkie champ</p>
+          </div>
+        </div>
+        <div class="row-block">
+          <div class="left-content">
+            <img src="assets/common/images/coins_all.gif" alt="{{'sparkies' | translate }}" title="{{'sparkies' | translate }}" />
+          </div>
+          <div class="right-content">
+            <h4 class="top-title">Awesome!</h4>
+            <p>You are the sparkie champ</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="left-image-ct">
+        <img src="assets/common/images/side-sparkie.png" alt="sparkie-champ" title="sparkie-champ" (click)="cose()" />
+
+      </div>
+      <div class="left-arrow"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="details-btn close-button" (click)="d('Cross click')">{{'close' | translate}}</button>
+    </div>
+  </ng-template>
+</div>

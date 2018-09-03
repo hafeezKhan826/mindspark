@@ -1,0 +1,25 @@
+<div class="container-fluid  gutterSpacing middle-container  template1">
+  <div class="container gutterSpacing loadsToleft" *ngIf="listSize>0">
+    <div class="list-container" *ngIf="liveWorksheets.length > 0">
+      <h4 class="worksheet-title"> Worksheet Due </h4>
+      <ms-worksheet-tile-t1 [liveWorksheets]="liveWorksheets" [for]="for"></ms-worksheet-tile-t1>
+    </div>
+
+    <div class="list-container" *ngIf="olderWorksheets.length > 0">
+      <h4 class="worksheet-title"> Older Worksheets</h4>
+      <ms-worksheet-tile-t1 [olderWorksheets]="olderWorksheets" [for]="for"></ms-worksheet-tile-t1>
+    </div>
+  </div>
+
+  <div class="container empty-container" *ngIf="listSize==0">
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <img src="assets/common/images/group-14.png" />
+      </div>
+      <div class="col-md-6 text-content">
+        <div class="heading-blue">Waiting for some worksheets…</div>
+        <div class="heading-grey">Ask your teacher to assign some worksheets to you.</div>
+      </div>
+    </div>
+  </div>
+</div>

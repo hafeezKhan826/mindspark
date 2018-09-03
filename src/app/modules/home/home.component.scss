@@ -1,0 +1,43 @@
+// component css goes here
+.header-bg {
+  height: auto;
+  width: 100%;
+  position: relative;
+  padding-bottom: 70px;
+  .header-content-area {
+    position: relative;
+  }
+  .header-bg-layer {
+    background-size: cover;
+    height: 280px;
+    width: 100%;
+    z-index: 0;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+  }
+}
+
+.homeStyler {
+  .header-bg {
+    height: auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 50px;
+    .header-content-area {
+      position: relative;
+      .profile {
+        display: none;
+      }
+    }
+    .header-bg-layer {
+      background-size: cover;
+      height: 350px;
+      width: 100%;
+      z-index: 0;
+      position: absolute;
+      left: 0px;
+      right: 0px;
+    }
+  }
+}

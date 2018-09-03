@@ -1,0 +1,61 @@
+<div class="third-row">
+  <div class="ms-table mindspark-champions">
+    <h4 class="reward-title title">{{ 'mindspark champions' | translate }}</h4>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="table-info">
+          <tr>
+            <th>{{'month' | translate}}</th>
+            <th>{{'maximum sparkies' | translate}}</th>
+            <th>{{'maximum shields' | translate}}</th>
+            <th>{{'maximum achievements' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let champion of championsForEachMonth | slice:0:displaySize; let i=index">
+            <td>{{ champion?.month | amParse:'YYYY-MM' | amDateFormat:'MMM' | translate}}</td>
+            <td>
+              <span [innerHtml]="champion?.sparkie?.starOftheMonth?.name"></span>
+              <span ngbDropdown class="more" *ngIf="champion?.sparkie?.othercount>0" (click)="toggleMorePopover(i, champion.sparkie.othernames)">
+                <span ngbDropdownToggle>
+                  +{{champion?.sparkie?.othercount}}
+                </span>
+                <div ngbDropdownMenu class="more-name">
+                  <ul>
+                    <li *ngFor="let leaders of leaderData" [innerHtml]="leaders"></li>
+                  </ul>
+                </div>
+              </span>
+            </td>
+            <td>
+              <span [innerHtml]="champion?.shield?.starOftheMonth?.name"></span>
+              <span ngbDropdown class="more" *ngIf="champion?.shield?.othercount>0" (click)="toggleMorePopover(i, champion.shield.othernames)">
+                <span ngbDropdownToggle>
+                  +{{champion?.shield?.othercount}}
+                </span>
+                <div ngbDropdownMenu class="more-name">
+                  <ul>
+                    <li *ngFor="let leaders of leaderData" [innerHtml]="leaders"></li>
+                  </ul>
+                </div>
+              </span>
+            </td>
+            <td>
+              <span [innerHtml]="champion?.achievement?.starOftheMonth?.name"></span>
+              <span ngbDropdown class="more" *ngIf="champion?.achievement?.othercount>0" (click)="toggleMorePopover(i, champion.achievement.othernames)">
+                <span ngbDropdownToggle>
+                  +{{champion?.achievement?.othercount}}
+                </span>
+                <div ngbDropdownMenu class="more-name">
+                  <ul>
+                    <li *ngFor="let leaders of leaderData" [innerHtml]="leaders"></li>
+                  </ul>
+                </div>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

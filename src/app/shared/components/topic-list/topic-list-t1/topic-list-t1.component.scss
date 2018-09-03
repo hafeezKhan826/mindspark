@@ -1,0 +1,102 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.filter-form {
+  padding-bottom: 10px;
+  .topic-title {
+    font-family: BalooBhaina;
+    font-size: 24px;
+    color: rgba($black, 0.7);
+  }
+  .btn-container {
+    padding-left: 15px;
+    .search {
+      padding: 6px 22px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      background: $primaryColor;
+      color: $white;
+      box-shadow: 0px 5px 0px $primaryShadowColor;
+      border: 0px;
+    }
+  }
+   ::-webkit-input-placeholder {
+    color: $darkGrey;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .check-box-container {
+    display: flex;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    cursor: pointer;
+    .checkbox {
+      width: 25px;
+      height: 25px;
+      min-width: 25px;
+      border-radius: 4px;
+      color: transparent;
+      text-align: center;
+      font-size: 18px;
+      margin: 2px 10px 2px 0px;
+      border: 2px solid $black;
+      box-shadow: 0px 3px 0px transparent;
+      i {
+        line-height: 26px;
+      }
+      input[type=checkbox] {
+        display: none;
+      }
+    }
+    .label {
+      font-size: 14px;
+      padding: 6px 0px 0px 0px;
+      font-family: BalooBhaina;
+      color: rgba($black, 0.7);
+    }
+  }
+}
+
+.checked {
+  background: $morningGloryShadow;
+  box-shadow: 0px 3px 0px $primaryShadowColor !important;
+  border: 0px !important;
+  color: $white !important;
+}
+
+.middle-container {
+  padding-top: 5%;
+  background: url('../../../../../assets/common/images/train-track-upper.png'), url('../../../../../assets/common/images/train-track-lower.png');
+  background-position: 0% 0%, 100% 105%;
+  background-repeat: no-repeat;
+  background-size: 25%, 75%;
+  min-height: 84vh;
+  padding-bottom: 80px;
+}
+
+.empty-container {
+  //padding: 100px 0px;
+  font-family: BalooBhaina;
+  transform: translate(1%, 30%);
+  img {
+    padding-bottom: 20px;
+  }
+  .text-content {
+    padding-top: 50px;
+    .heading-blue {
+      font-size: 24px;
+      font-weight: bold;
+      color: $black;
+    }
+    .heading-grey {
+      font-size: 18px;
+      font-weight: bold;
+      color: $black;
+    }
+  }
+}
+
+// .gutterSpacing {
+//   padding-left: 0px;
+//   padding-right: 0px;
+// }

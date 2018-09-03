@@ -1,0 +1,17 @@
+<ng-template #content let-c="close" let-d="dismiss">
+
+
+  <div class="modal-header modal-header-container">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="modal-body modal-btn-container">
+    <p>You have completed set of questions and unlocked so and so game. Please go head and play</p>
+    <!--<button type="button" class="btn modalbtns btn-no" (click)="c('Close click')">No</button>-->
+    <button type="button" class="btn modalbtns btn-yes">LET'S PLAY</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-done" [ngClass]="templateClass" (click)="doneQuestion(content)">{{'done' | translate}}</button>

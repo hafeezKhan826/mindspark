@@ -1,0 +1,4 @@
+<ngb-pagination [collectionSize]="collectionSize" aria-label="Default pagination" (pageChange)="loadPage($event)" [page]="currentPage"
+  [pageSize]="totalPagesCount" [rotate]="true" [ellipses]="false"></ngb-pagination>
+
+{{ totalPagesCount }} {{ collectionSize }} {{ currentPage }}
